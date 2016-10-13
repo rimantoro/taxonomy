@@ -1,4 +1,4 @@
-<?php namespace Devfactory\Taxonomy\Controllers;
+<?php namespace Rimantoro\Taxonomy\Controllers;
 
 use Config;
 use Input;
@@ -11,8 +11,8 @@ use Validator;
 use View;
 use Helpers;
 
-use Devfactory\Taxonomy\Models\Vocabulary;
-use Devfactory\Taxonomy\Models\Term;
+use Rimantoro\Taxonomy\Models\Vocabulary;
+use Rimantoro\Taxonomy\Models\Term;
 
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -68,7 +68,7 @@ class TermsController extends BaseController {
 
     $term = \Taxonomy::createTerm($vocabulary->id, Input::get('name'));
 
-    return Redirect::to(action('\Devfactory\Taxonomy\Controllers\TermsController@getIndex', ['id' => $vocabulary->id]))->with('success', 'Created');
+    return Redirect::to(action('\Rimantoro\Taxonomy\Controllers\TermsController@getIndex', ['id' => $vocabulary->id]))->with('success', 'Created');
   }
 
   /**
@@ -129,7 +129,7 @@ class TermsController extends BaseController {
     $term->name = Input::get('name');
     $term->save();
 
-    return Redirect::to(action('\Devfactory\Taxonomy\Controllers\TermsController@getIndex', ['id' => $term->vocabulary_id]))->with('success', 'Updated');
+    return Redirect::to(action('\Rimantoro\Taxonomy\Controllers\TermsController@getIndex', ['id' => $term->vocabulary_id]))->with('success', 'Updated');
   }
 
   /**

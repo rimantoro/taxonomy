@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.org/DevFactoryCH/taxonomy.svg?branch=master)](https://travis-ci.org/DevFactoryCH/taxonomy)
-[![Latest Stable Version](https://poser.pugx.org/devfactory/taxonomy/v/stable.svg)](https://packagist.org/packages/devfactory/taxonomy)
-[![Total Downloads](https://poser.pugx.org/devfactory/taxonomy/downloads.svg)](https://packagist.org/packages/devfactory/taxonomy)
-[![License](https://poser.pugx.org/devfactory/taxonomy/license.svg)](https://packagist.org/packages/devfactory/taxonomy)
 
-#Taxonomy
+#Taxonomy For Lumen
+
+Originally this repo was forked from https://github.com/DevFactoryCH/taxonomy.
 
 This package allows you to create vocabularies with terms in Laravel 4 and 5
 
@@ -16,13 +14,13 @@ In your `composer.json` add:
 #### 5.0 - 5.1
 
 	"require": {
-		"devfactory/taxonomy": "3.0.*"
+		"rimantoro/taxonomy": "3.0.*"
 	}
 
 #### 5.2+
 
 	"require": {
-		"devfactory/taxonomy": "3.1.*"
+		"rimantoro/taxonomy": "3.1.*"
 	}
 
 From the terminal run
@@ -32,9 +30,9 @@ From the terminal run
 Then register the service provider and Facade by opening `app/config/app.php`
 
 ```php
-'Devfactory\Taxonomy\TaxonomyServiceProvider',
+'Rimantoro\Taxonomy\TaxonomyServiceProvider',
 
-'Taxonomy'        => 'Devfactory\Taxonomy\Facades\TaxonomyFacade',
+'Taxonomy'        => 'Rimantoro\Taxonomy\Facades\TaxonomyFacade',
 ```
 
 Then run the following artisant command to publish the config and migrations:
@@ -51,7 +49,7 @@ And finally in any of the Models where you want to use the Taxonomy functionalit
 <?php
 
 class Car extends \Eloquent {
-  use \Devfactory\Taxonomy\TaxonomyTrait;
+  use \Rimantoro\Taxonomy\TaxonomyTrait;
 }
 ```
 
@@ -60,7 +58,7 @@ class Car extends \Eloquent {
 In your `composer.json` add:
 
 	"require": {
-		"devfactory/taxonomy": "2.0.*"
+		"rimantoro/taxonomy": "2.0.*"
 	}
 
 From the terminal run
@@ -70,18 +68,18 @@ From the terminal run
 Then register the service provider and Facade by opening `app/config/app.php`
 
 ```php
-'Devfactory\Taxonomy\TaxonomyServiceProvider',
+'Rimantoro\Taxonomy\TaxonomyServiceProvider',
 
-'Taxonomy'        => 'Devfactory\Taxonomy\Facades\TaxonomyFacade',
+'Taxonomy'        => 'Rimantoro\Taxonomy\Facades\TaxonomyFacade',
 ```
 
 If you want you can publish the config files if you want to change them
 
-    php artisan config:publish devfactory/taxonomy
+    php artisan config:publish rimantoro/taxonomy
 
 Perform the DB migrations to install the required tables
 
-    php artisan migrate --package=devfactory/taxonomy
+    php artisan migrate --package=rimantoro/taxonomy
 
 And finally in any of the Models where you want to use the Taxonomy functionality, add the following trait:
 
@@ -89,7 +87,7 @@ And finally in any of the Models where you want to use the Taxonomy functionalit
 <?php
 
 class Car extends \Eloquent {
-  use \Devfactory\Taxonomy\TaxonomyTrait;
+  use \Rimantoro\Taxonomy\TaxonomyTrait;
 }
 ```
 

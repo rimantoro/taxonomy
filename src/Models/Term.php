@@ -1,6 +1,8 @@
-<?php namespace Devfactory\Taxonomy\Models;
+<?php namespace Rimantoro\Taxonomy\Models;
 
-class Term extends \Eloquent {
+use Illuminate\Database\Eloquent\Model;
+
+class Term extends Model {
 
   protected $fillable = [
     'name',
@@ -14,19 +16,19 @@ class Term extends \Eloquent {
   ];
 
   public function termRelation() {
-    return $this->morphMany('Devfactory\Taxonomy\Models\TermRelation', 'relationable');
+    return $this->morphMany('Rimantoro\Taxonomy\Models\TermRelation', 'relationable');
   }
 
 	public function vocabulary() {
-		return $this->belongsTo('Devfactory\Taxonomy\Models\Vocabulary');
+		return $this->belongsTo('Rimantoro\Taxonomy\Models\Vocabulary');
 	}
 
   public function childrens() {
-    return $this->hasMany('Devfactory\Taxonomy\Models\Term', 'parent', 'id')
+    return $this->hasMany('Rimantoro\Taxonomy\Models\Term', 'parent', 'id')
       ->orderBy('weight', 'ASC');
   }
 
   public function parentTerm() {
-    return $this->hasOne('Devfactory\Taxonomy\Models\Term', 'id', 'parent');
+    return $this->hasOne('Rimantoro\Taxonomy\Models\Term', 'id', 'parent');
   }
 }

@@ -1,7 +1,7 @@
-<?php namespace Devfactory\Taxonomy;
+<?php namespace Rimantoro\Taxonomy;
 
-use Devfactory\Taxonomy\Models\Vocabulary;
-use Devfactory\Taxonomy\Models\Term;
+use Rimantoro\Taxonomy\Models\Vocabulary;
+use Rimantoro\Taxonomy\Models\Term;
 
 class Taxonomy {
 
@@ -27,7 +27,7 @@ class Taxonomy {
    */
   public function createVocabulary($name) {
     if ($this->vocabulary->where('name', $name)->count()) {
-      throw new Exceptions\VocabularyExistsException();
+      throw new Exceptions\VocabularyExistsException("Vocabulary '$name' already exists");
     }
 
 		return $this->vocabulary->create(['name' => $name]);

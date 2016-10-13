@@ -1,6 +1,8 @@
-<?php namespace Devfactory\Taxonomy\Models;
+<?php namespace Rimantoro\Taxonomy\Models;
 
-class TermRelation extends \Eloquent {
+use Illuminate\Database\Eloquent\Model;
+
+class TermRelation extends Model {
 
   protected $fillable = [
     'term_id',
@@ -14,7 +16,11 @@ class TermRelation extends \Eloquent {
   }
 
 	public function term() {
-		return $this->belongsTo('Devfactory\Taxonomy\Models\Term');
+		return $this->belongsTo('Rimantoro\Taxonomy\Models\Term');
 	}
+
+  public function vocabulary() {
+    return $this->belongsTo('Rimantoro\Taxonomy\Models\Vocabulary');
+  }
 
 }

@@ -1,7 +1,8 @@
-<?php namespace Devfactory\Taxonomy;
+<?php namespace Rimantoro\Taxonomy;
 
-use Devfactory\Taxonomy\Models\TermRelation;
-use Devfactory\Taxonomy\Models\Term;
+use Rimantoro\Taxonomy\Models\TermRelation;
+use Rimantoro\Taxonomy\Models\Term;
+use Rimantoro\Taxonomy\Models\Vocabulary;
 
 trait TaxonomyTrait {
 
@@ -11,7 +12,7 @@ trait TaxonomyTrait {
      * @return Illuminate\Database\Eloquent\Collection
      */
     public function related() {
-        return $this->morphMany('Devfactory\Taxonomy\Models\TermRelation', 'relationable');
+        return $this->morphMany('Rimantoro\Taxonomy\Models\TermRelation', 'relationable');
     }
 
   /**
@@ -52,6 +53,27 @@ trait TaxonomyTrait {
     ];
 
     return ($this->related()->where('term_id', $term_id)->count()) ? TRUE : FALSE;
+  }
+
+  /**
+   * Check if model have a related Vocabulary & Term
+   *
+   * @param $vocab_name string  vocabulary name
+   * @param $term_name string  term name
+   *
+   * @return boolean
+   */
+  public function hasTermByName($vocab_name, $term_name) {
+    if(!Vocabulary::where('name', $vocab_name)->count()) return FALSE;
+    if(!Term::where('name', $term_name)->count()) return FALSE;
+
+    return ($this->related()
+      ->whereHas('vocabulary', function($q) use ($vocab_name) {
+        $q->where('name', $vocab_name);
+      })
+      ->whereHas('term', function($q) use ($term_name) {
+        $q->where('name', $term_name);
+      })->count()) ? TRUE : FALSE;
   }
 
   /**
@@ -135,4 +157,18 @@ trait TaxonomyTrait {
       }
     });
   }
+
+  /**
+   * Get all vocabularies related with model. Will return array consist of [ id => name, id => name ] or empty array on false.
+   *
+   * @return array
+   */
+  public function getAllVocabularies() {
+    $relationable_type = get_class($this);
+
+    return Models\Vocabulary::whereHas('relations', function($q) use ($relationable_type) {
+      $q->where('relationable_type', $relationable_type);
+    })->pluck('name','id');
+  }
+
 }

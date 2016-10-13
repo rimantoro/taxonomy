@@ -1,4 +1,4 @@
-<?php namespace Devfactory\Taxonomy\Composers;
+<?php namespace Rimantoro\Taxonomy\Composers;
 
 use Config;
 

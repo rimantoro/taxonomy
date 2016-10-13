@@ -1,6 +1,8 @@
-<?php namespace Devfactory\Taxonomy\Models;
+<?php namespace Rimantoro\Taxonomy\Models;
 
-class Vocabulary extends \Eloquent {
+use Illuminate\Database\Eloquent\Model;
+
+class Vocabulary extends Model {
 
   protected $fillable = [
     'name',
@@ -13,11 +15,11 @@ class Vocabulary extends \Eloquent {
   ];
 
   public function terms() {
-    return $this->HasMany('Devfactory\Taxonomy\Models\Term');
+    return $this->HasMany('Rimantoro\Taxonomy\Models\Term');
   }
 
   public function relations() {
-    return $this->HasMany('Devfactory\Taxonomy\Models\TermRelation');
+    return $this->HasMany('Rimantoro\Taxonomy\Models\TermRelation');
   }
 
 }

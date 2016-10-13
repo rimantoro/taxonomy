@@ -1,12 +1,12 @@
 {
-  "name": "devfactory/taxonomy",
-  "description": "Create and manage a heirarchical taxonomy of terms within different vocabularies",
+  "name": "rimantoro/taxonomy",
+  "description": "Manage taxonomies for Lumen (from Laravel) framework, this package is a fork from https://github.com/DevFactoryCH/taxonomy",
   "license": "MIT",
   "keywords": ["taxonomy"],
   "authors": [
     {
-      "name": "Mark Cameron",
-      "email": "mark.cameron@devfactory.ch"
+      "name": "Rosa Imantoro",
+      "email": "rosaimantoro@gmail.com"
     }
   ],
   "require": {
@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Devfactory\\Taxonomy\\": "src/"
+      "Rimantoro\\Taxonomy\\": "src/"
     }
   },
   "extra": {

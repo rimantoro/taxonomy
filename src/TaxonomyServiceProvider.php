@@ -1,8 +1,8 @@
-<?php namespace Devfactory\Taxonomy;
+<?php namespace Rimantoro\Taxonomy;
 
 use Illuminate\Support\ServiceProvider;
-use Devfactory\Taxonomy\Models\Vocabulary;
-use Devfactory\Taxonomy\Models\Term;
+use Rimantoro\Taxonomy\Models\Vocabulary;
+use Rimantoro\Taxonomy\Models\Term;
 
 class TaxonomyServiceProvider extends ServiceProvider {
 
@@ -59,24 +59,24 @@ class TaxonomyServiceProvider extends ServiceProvider {
    * Publish the package configuration
    */
   protected function publishConfig() {
-    $this->publishes([
-      __DIR__ . '/config/config.php' => config_path('taxonomy.config.php'),
-    ], 'config');
+    // $this->publishes([
+    //   __DIR__ . '/config/config.php' => config_path('taxonomy.config.php'),
+    // ], 'config');
   }
 
   /**
    * Publish the migration stub
    */
   protected function publishMigration() {
-    $this->publishes([
-      __DIR__ . '/migrations' => $this->app->databasePath() . '/migrations'
-    ], 'migrations');
+    // $this->publishes([
+    //   __DIR__ . '/migrations' => $this->app->databasePath() . '/migrations'
+    // ], 'migrations');
   }
 
   protected function publishAssets() {
-    $this->publishes([
-      __DIR__.'/../public/' => public_path('vendor/taxonomy'),
-    ], 'public');
+    // $this->publishes([
+    //   __DIR__.'/../public/' => public_path('vendor/taxonomy'),
+    // ], 'public');
   }
 
 }
